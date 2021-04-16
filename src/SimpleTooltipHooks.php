@@ -1,15 +1,13 @@
 <?php
-/**
- * SimpleTooltip Parser Functions
- *
- * @file
- * @ingroup Extensions
- */
+
 class SimpleTooltipHooks {
 	/**
 	 * Add libraries to resource loader
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		// Add as ResourceLoader Module
 		$out->addModules( 'ext.SimpleTooltip' );
 	}
@@ -17,18 +15,18 @@ class SimpleTooltipHooks {
 	/**
 	 * Register parser hooks
 	 *
-	 * See also http://www.mediawiki.org/wiki/Manual:Parser_functions
+	 * @param Parser $parser
 	 */
-	public static function onParserFirstCallInit( &$parser ) {
+	public static function onParserFirstCallInit( Parser $parser ) {
 		// Register parser functions
-		$parser->setFunctionHook( 'simple-tooltip', 'SimpleTooltipParserFunction::inlineTooltip' );
-		$parser->setFunctionHook( 'tip-text', 'SimpleTooltipParserFunction::inlineTooltip' );
+		$parser->setFunctionHook( 'simple-tooltip', [ __CLASS__, 'inlineTooltip' ] );
+		$parser->setFunctionHook( 'tip-text', [ __CLASS__, 'inlineTooltip' ] );
 
-		$parser->setFunctionHook( 'simple-tooltip-info', 'SimpleTooltipParserFunction::infoTooltip' );
-		$parser->setFunctionHook( 'tip-info', 'SimpleTooltipParserFunction::infoTooltip' );
+		$parser->setFunctionHook( 'simple-tooltip-info', [ __CLASS__, 'infoTooltip' ] );
+		$parser->setFunctionHook( 'tip-info', [ __CLASS__, 'infoTooltip' );
 
-		$parser->setFunctionHook( 'simple-tooltip-img', 'SimpleTooltipParserFunction::imgTooltip' );
-		$parser->setFunctionHook( 'tip-img', 'SimpleTooltipParserFunction::imgTooltip' );
+		$parser->setFunctionHook( 'simple-tooltip-img', [ __CLASS__, 'imgTooltip' ] );
+		$parser->setFunctionHook( 'tip-img', [ __CLASS__, 'imgTooltip' ] );
 	}
 
 	/**
@@ -37,7 +35,7 @@ class SimpleTooltipHooks {
 	 * @param Parser $parser
 	 * @param string $arg
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return array
 	 */
 	public static function inlineTooltip( $parser, $value ) {
 		$args = array_slice( func_get_args(), 2 );
@@ -68,7 +66,7 @@ class SimpleTooltipHooks {
 	 * @param Parser $parser
 	 * @param string $arg
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return array
 	 */
 	public static function infoTooltip( $parser, $value ) {
 		$html = '<span class="simple-tooltip simple-tooltip-info"';
@@ -89,7 +87,7 @@ class SimpleTooltipHooks {
 	 * @param Parser $parser
 	 * @param string $arg
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return array
 	 */
 	public static function imgTooltip( $parser, $value ) {
 		$args = array_slice( func_get_args(), 2 );
