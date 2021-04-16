@@ -1,33 +1,18 @@
 <?php
-$wgSimpleTooltipSubmitText = 'NEW';
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'SimpleTooltip' );
 
-$wgExtensionCredits['other'][] = [
-   'path'           => __FILE__,
-   'name'           => 'SimpleTooltip',
-   'author'         => [ 'Simon Heimler' ],
-   'version'        => '1.1.0',
-   'url'            => 'https://www.mediawiki.org/wiki/Extension:SimpleTooltip',
-   'descriptionmsg' => 'simpletooltip-desc',
-   'license-name'   => 'MIT'
-];
+	$wgMessagesDirs['SimpleTooltip'] = __DIR__ . '/i18n';
 
-$wgResourceModules['ext.SimpleTooltip'] = [
-   'scripts' => [
-      'lib/jquery.tooltipster.js',
-      'lib/SimpleTooltip.js',
-   ],
-   'styles' => [
-      'lib/tooltipster.css',
-      'lib/SimpleTooltip.css',
-   ],
-   'localBasePath' => __DIR__,
-   'remoteExtPath' => 'SimpleTooltip',
-];
+	$wgExtensionMessagesFiles['SimpleTooltipMagic'] = __DIR__ . '/SimpleTooltip.i18n.magic.php';
 
-$wgMessagesDirs['SimpleTooltip'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['SimpleTooltipMagic'] = __DIR__ . '/SimpleTooltip.i18n.magic.php';
+	wfWarn(
+		'Deprecated PHP entry point used for the SimpleTooltip extension. ' .
+		'Please use wfLoadExtension() instead, ' .
+		'see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Extension_registration for more details.'
+	);
 
-$wgAutoloadClasses['SimpleTooltipHooks'] = __DIR__ . '/src/SimpleTooltipHooks.php';
-
-$wgHooks['BeforePageDisplay'][] = 'SimpleTooltipHooks::onBeforePageDisplay';
-$wgHooks['ParserFirstCallInit'][] = 'SimpleTooltipHooks::onParserFirstCallInit';
+	return;
+} else {
+	die( 'This version of the SimpleTooltip extension requires MediaWiki 1.35+' );
+}
