@@ -23,7 +23,7 @@ class SimpleTooltipHooks {
 		$parser->setFunctionHook( 'tip-text', [ __CLASS__, 'inlineTooltip' ] );
 
 		$parser->setFunctionHook( 'simple-tooltip-info', [ __CLASS__, 'infoTooltip' ] );
-		$parser->setFunctionHook( 'tip-info', [ __CLASS__, 'infoTooltip' );
+		$parser->setFunctionHook( 'tip-info', [ __CLASS__, 'infoTooltip' ] );
 
 		$parser->setFunctionHook( 'simple-tooltip-img', [ __CLASS__, 'imgTooltip' ] );
 		$parser->setFunctionHook( 'tip-img', [ __CLASS__, 'imgTooltip' ] );
