@@ -37,7 +37,7 @@
 				"lib/tooltipster.css",
 				"lib/SimpleTooltip.css"
 			]
-		},
+		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
