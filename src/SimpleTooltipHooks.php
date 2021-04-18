@@ -33,11 +33,10 @@ class SimpleTooltipHooks {
 	 * Parser function handler for {{#tip-text: inline-text | tooltip-text }}
 	 *
 	 * @param Parser $parser
-	 * @param string $arg
-	 *
+	 * @param string $value
 	 * @return array
 	 */
-	public static function inlineTooltip( $parser, $value ) {
+	public static function inlineTooltip( Parser $parser, string $value ) {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
 
@@ -64,11 +63,10 @@ class SimpleTooltipHooks {
 	 * Parser function handler for {{#tip-info: tooltip-text }}
 	 *
 	 * @param Parser $parser
-	 * @param string $arg
-	 *
+	 * @param string $value
 	 * @return array
 	 */
-	public static function infoTooltip( $parser, $value ) {
+	public static function infoTooltip( Parser $parser, string $value ) {
 		$html = '<span class="simple-tooltip simple-tooltip-info"';
 
 		$html .= ' data-simple-tooltip="' . htmlspecialchars( Sanitizer::removeHTMLtags( $value ) ) . '"></span>';
@@ -85,11 +83,10 @@ class SimpleTooltipHooks {
 	 * Parser function handler for {{#tip-img: image-url | tooltip-text }}
 	 *
 	 * @param Parser $parser
-	 * @param string $arg
-	 *
+	 * @param string $value
 	 * @return array
 	 */
-	public static function imgTooltip( $parser, $value ) {
+	public static function imgTooltip( Parser $parser, string $value ) {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
 		$imgUrl = htmlspecialchars( $value );
