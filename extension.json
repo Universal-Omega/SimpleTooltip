@@ -5,7 +5,7 @@
 		"Universal Omega",
 		"Simon Heimler"
 	],
-	"url": "https://www.mediawiki.org/wiki/Extension:SimpleTooltip",
+	"url": "https://www.mediawiki.org/wiki/Extension:SimpleTooltip_(Universal-Omega)",
 	"descriptionmsg": "simpletooltip-desc",
 	"license-name": "MIT",
 	"type": "parserhook",
