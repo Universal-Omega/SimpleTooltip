@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Fannon",
-			"Kghbln"
+			"Kghbln",
+			"Universal Omega"
 		]
 	},
-	"simpletooltip-desc": "{{desc|name=SimpleTooltip|url=https://www.mediawiki.org/wiki/Extension:SimpleTooltip}}"
+	"simpletooltip-desc": "{{desc|name=SimpleTooltip|url=https://www.mediawiki.org/wiki/Extension:SimpleTooltip_(Universal-Omega)}}"
 }
