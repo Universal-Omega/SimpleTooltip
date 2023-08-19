@@ -40,6 +40,10 @@ class SimpleTooltipHooks {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
 
+		if ( !isset( $title ) ) {
+			return true;
+		}
+
 		$content = Sanitizer::removeSomeTags( $title );
 		$content = $parser->recursiveTagParseFully( $content );
 		$content = str_replace( '"', "'", $content );
@@ -67,6 +71,10 @@ class SimpleTooltipHooks {
 	 * @return array
 	 */
 	public static function infoTooltip( Parser $parser, string $value ) {
+		if ( !isset( $value ) ) {
+			return true;
+		}
+
 		$html = '<span class="simple-tooltip simple-tooltip-info"';
 
 		$html .= ' data-simple-tooltip="' . htmlspecialchars( Sanitizer::removeSomeTags( $value ) ) . '"></span>';
@@ -89,6 +97,11 @@ class SimpleTooltipHooks {
 	public static function imgTooltip( Parser $parser, string $value ) {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
+
+		if ( !isset( $title ) ) {
+			return true;
+		}
+
 		$imgUrl = htmlspecialchars( $value );
 
 		$html = '<img class="simple-tooltip simple-tooltip-img"';
