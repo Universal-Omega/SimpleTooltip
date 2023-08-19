@@ -41,7 +41,7 @@ class SimpleTooltipHooks {
 		$title = $args[0];
 
 		if ( !isset( $title ) ) {
-			return true;
+			return [];
 		}
 
 		$content = Sanitizer::removeSomeTags( $title );
@@ -72,7 +72,7 @@ class SimpleTooltipHooks {
 	 */
 	public static function infoTooltip( Parser $parser, string $value ) {
 		if ( !isset( $value ) ) {
-			return true;
+			return [];
 		}
 
 		$html = '<span class="simple-tooltip simple-tooltip-info"';
@@ -99,7 +99,7 @@ class SimpleTooltipHooks {
 		$title = $args[0];
 
 		if ( !isset( $title ) ) {
-			return true;
+			return [];
 		}
 
 		$imgUrl = htmlspecialchars( $value );
