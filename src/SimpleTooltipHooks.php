@@ -40,7 +40,7 @@ class SimpleTooltipHooks {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
 
-		if ( !isset( $title ) ) {
+		if ( !$title ) {
 			return [];
 		}
 
@@ -71,7 +71,7 @@ class SimpleTooltipHooks {
 	 * @return array
 	 */
 	public static function infoTooltip( Parser $parser, string $value ) {
-		if ( !isset( $value ) ) {
+		if ( !$value ) {
 			return [];
 		}
 
@@ -98,7 +98,7 @@ class SimpleTooltipHooks {
 		$args = array_slice( func_get_args(), 2 );
 		$title = $args[0];
 
-		if ( !isset( $title ) ) {
+		if ( !$title ) {
 			return [];
 		}
 
